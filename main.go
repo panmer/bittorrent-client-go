@@ -1,10 +1,10 @@
 package main
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
 	"os"
-	"decode/decode"
+	"torrent-client-go/decode"
 )
 
 func main() {
@@ -20,9 +20,9 @@ func main() {
 
 	switch command {
 		case "decode":
-			decodeCommand.Command(bencodedValue)
-		// case "info":
-		// 	infoCommand.Command(bencodedValue)
+			decode.Command(bencodedValue)
+		case "info":
+			fmt.Println("info command");
 		// case "peers":
 		// 	peersCommand.Command(bencodedValue)
 	}
