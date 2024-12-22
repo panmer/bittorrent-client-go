@@ -28,7 +28,7 @@ func LoadTorrentFile(torrentFilePath string) (*torrent.Torrent, error) {
 	metadata := torrent.Torrent{}
 
 	if err := bencode.Unmarshal(buffer, &metadata); err != nil {
-		return nil, fmt.Errorf("error unmarshalling torrent data: %v", err)
+		return nil, fmt.Errorf("Error unmarshal torrent data: %v", err)
 	}
 
 	return &metadata, nil
