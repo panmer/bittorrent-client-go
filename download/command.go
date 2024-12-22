@@ -43,12 +43,14 @@ func DownloadPiece(tcpConnection *net.TCPConn, pidx int, totalBlocks int,
 			fmt.Println(err)
 			return nil
 		}
-		peers := peers.PeersCommand(bencodedValue)
+		peers := peers.Command(bencodedValue)
+
 		pieceData := make([]byte, 0)
-		pieceInd, _ := strconv.Atoi(pieceIndex)
-		tcpConnection := tcp.ConnectTCP(bencodedValue, peers[pieceInd%len(peers)])
+		pidx, _ := strconv.Atoi(pieceIndex)
+
+		tcpConnection := tcp.ConnectTCP(bencodedValue, peers[pidx%len(peers)])
 	
-		pieceLength := metadata.Info.Piece_length
+		pieceLength := metadata.Info.PieceLength
 
 		for {
 			messageLength := make([]byte, 4)
